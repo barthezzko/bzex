@@ -42,5 +42,17 @@
           <artifactId>slf4j-log4j12</artifactId>
           <version>1.7.5</version>
       </dependency>
+
+      <dependency>
+          <groupId>com.github.axet</groupId>
+          <artifactId>wget</artifactId>
+          <version>1.2.12</version>
+      </dependency>
+      <dependency>
+          <groupId>com.github.axet</groupId>
+          <artifactId>vget</artifactId>
+          <version>1.1.22</version>
+      </dependency>
+
   </dependencies>
 </project>
