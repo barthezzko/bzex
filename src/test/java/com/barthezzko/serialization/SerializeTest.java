@@ -23,6 +23,7 @@ public class SerializeTest {
     @Test
     public void test() throws IOException, ClassNotFoundException {
         Cat cat = new Cat(Arrays.asList(new Integer[]{1,2,3,4}));
+        cat.CAT_GROUP = "Kaktuss";
         FileOutputStream fileOutputStream = new FileOutputStream(new File("cat.ser"));
         ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
         oos.writeObject(cat);
@@ -32,13 +33,16 @@ public class SerializeTest {
         ObjectInputStream ois = new ObjectInputStream(fis);
         Cat catRead = (Cat)ois.readObject();
 
-        System.out.println(cat);
-        System.out.println(catRead);
+        logger.info("cat created {}", cat);
+        logger.info("cat deserialized {}", catRead);
         Assert.assertEquals(cat, catRead);
+        logger.info(catRead.CAT_GROUP);
     }
 }
 
 class Cat implements Serializable {
+
+    public static String CAT_GROUP;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
