@@ -1,4 +1,4 @@
-package com.barthezzko.sync;
+package com.barthezzko.concurrent;
 
 
 import org.slf4j.Logger;

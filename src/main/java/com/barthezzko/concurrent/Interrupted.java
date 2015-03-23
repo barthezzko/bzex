@@ -1,4 +1,4 @@
-package com.barthezzko.sync;
+package com.barthezzko.concurrent;
 
 public class Interrupted {
 
