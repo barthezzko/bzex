@@ -8,24 +8,29 @@ import java.util.concurrent.Future;
 
 public class CallableTask {
 
-	public static void main(String[] args) throws InterruptedException, ExecutionException {
+	public static void main(String[] args) throws InterruptedException,
+			ExecutionException {
 		Callable<Integer> callableTask = new Callable<Integer>() {
-
 			public Integer call() throws Exception {
-				Thread.sleep(5000);
+				for (int i = 0; i < 50; i++) {
+					Thread.sleep(100);
+				}
 				return 1;
 			}
 		};
 		ExecutorService exec = Executors.newCachedThreadPool();
-		Future<Integer> result =  exec.submit(callableTask);
-		while (!result.isDone()){
+		Future<Integer> result = exec.submit(callableTask);
+
+		exec.shutdownNow();
+		Thread.sleep(2000);
+		System.out.println("cancel");
+		result.cancel(true);
+		System.out.println("canceled");
+		while (!result.isDone()) {
 			System.out.println("check");
 			Thread.sleep(100);
 		}
 		System.out.println(result.get());
-		exec.shutdownNow();
-		
 	}
-	
-	
+
 }
