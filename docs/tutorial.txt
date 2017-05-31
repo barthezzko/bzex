@@ -1,0 +1,1 @@
+for running tests - go to Eclipse IDE and run damn tests
